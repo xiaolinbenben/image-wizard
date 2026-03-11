@@ -1,265 +1,373 @@
 {
   "id": "2d_image",
-  "title": "生图系统 — 2D 图片",
-  "description": "通过选择 IP 形象、设计元素、尺寸规格等参数，快速生成适用于电商、文创等场景的 2D 产品图片",
-  "base_prompt": "Generate a high-quality 2D product illustration image with flat design style",
-  "output_constraint": "2D flat illustration style, clean edges, vivid colors, print-ready quality, no watermark, no extra background clutter.",
+  "title": "跨境电商2D图",
+  "description": "通过问答方式快速生成适用于跨境商品印花的 2D 设计图，覆盖主体、元素、风格、白底、文字、产品与人群。",
+  "base_prompt": "Generate a high-quality 2D product print design image for cross-border merchandise.",
+  "output_constraint": "2D illustration style, clean composition, print-friendly details, no watermark, suitable for product printing scenes.",
   "questions": [
     {
-      "id": "ip",
-      "question": "你希望以哪种 IP 形象作为主体？",
-      "description": "选择主体 IP 形象或角色风格",
+      "id": "ip_subject",
+      "question": "生成图片的 IP 主体是？",
+      "description": "先确定画面的核心主体形象",
+      "question_kind": "prompt_input",
       "type": "single",
-      "custom_input_placeholder": "例如：戴安全帽的小狗、背小书包的可爱小女孩...",
+      "custom_input_placeholder": "例如：戴耳机的柴犬宇航员、拿咖啡的卡通狐狸",
       "options": [
         {
           "id": "cute_animal",
           "label": "萌系动物",
-          "description": "兔子、猫咪、小熊等圆润可爱的动物 IP",
-          "tags": [
-            "萌系",
-            "动物"
-          ],
-          "preview": "#FFB6C1"
+          "description": "兔子、猫咪、狗狗、熊等可爱动物形象"
         },
         {
-          "id": "chibi_human",
-          "label": "Q 版人物",
-          "description": "头大身小、大眼睛的 Q 版人物形象",
-          "tags": [
-            "Q版",
-            "人物"
-          ],
-          "preview": "#FFD700"
+          "id": "anime_character",
+          "label": "二次元角色",
+          "description": "偏动漫风的角色造型与表情"
         },
         {
-          "id": "mascot",
+          "id": "brand_mascot",
           "label": "品牌吉祥物",
-          "description": "可爱有辨识度的品牌代言虚拟形象",
-          "tags": [
-            "吉祥物",
-            "品牌"
-          ],
-          "preview": "#87CEEB"
+          "description": "具识别度的品牌代言形象"
         },
         {
-          "id": "nature_element",
-          "label": "自然元素",
-          "description": "花卉、植物、云朵等自然装饰性图形",
-          "tags": [
-            "自然",
-            "植物"
-          ],
-          "preview": "#90EE90"
+          "id": "fantasy_creature",
+          "label": "奇幻生物",
+          "description": "独角兽、龙、精灵等幻想生物"
         },
         {
-          "id": "abstract_shape",
-          "label": "抽象几何",
-          "description": "几何图形组合，现代感强",
-          "tags": [
-            "抽象",
-            "几何"
-          ],
-          "preview": "#DDA0DD"
+          "id": "food_character",
+          "label": "食物拟人",
+          "description": "汉堡、奶茶、甜点等拟人化角色"
+        },
+        {
+          "id": "plant_character",
+          "label": "植物拟人",
+          "description": "花朵、蘑菇、仙人掌等拟人化设计"
+        },
+        {
+          "id": "minimal_icon",
+          "label": "极简图标主体",
+          "description": "扁平图标化主体，简洁易印刷"
         },
         {
           "id": "retro_cartoon",
           "label": "复古卡通",
-          "description": "复古漫画风，有年代感和情怀",
-          "tags": [
-            "复古",
-            "卡通"
-          ],
-          "preview": "#F4A460"
+          "description": "复古年代感卡通形象"
+        },
+        {
+          "id": "chibi_human",
+          "label": "Q版人物",
+          "description": "头身比夸张、表情丰富的 Q 版角色"
+        },
+        {
+          "id": "custom_subject",
+          "label": "自定义主体",
+          "description": "按你的需求指定主体内容"
         }
-      ],
-      "question_kind": "prompt_input"
+      ]
     },
     {
-      "id": "elements",
-      "question": "你想在画面中加入哪些装饰元素？",
-      "description": "选择画面中的辅助装饰元素（可多选）",
+      "id": "extra_elements",
+      "question": "除了主体之外，需要添加什么额外的元素？",
+      "description": "可多选，强化画面氛围和装饰感",
+      "question_kind": "prompt_input",
       "type": "multi",
-      "custom_input_placeholder": "例如：雨滴、虎皮斑纹、小力士剪影...",
+      "custom_input_placeholder": "例如：霓虹边框、水花、闪电、笑脸贴纸",
       "options": [
         {
-          "id": "stars",
-          "label": "星星 / 闪光"
+          "id": "stars_sparkles",
+          "label": "星星与闪光"
         },
         {
-          "id": "flowers",
-          "label": "花朵 / 植物"
+          "id": "flowers_leaves",
+          "label": "花朵与叶子"
         },
         {
-          "id": "clouds",
-          "label": "云朵 / 气泡"
+          "id": "clouds_bubbles",
+          "label": "云朵与气泡"
         },
         {
-          "id": "ribbons",
-          "label": "丝带 / 彩带"
+          "id": "ribbons_confetti",
+          "label": "丝带与彩纸"
         },
         {
-          "id": "icons",
-          "label": "图标 / 符号"
+          "id": "geometric_shapes",
+          "label": "几何图形"
         },
         {
-          "id": "pattern_bg",
-          "label": "底纹 / 纹理"
+          "id": "pattern_texture",
+          "label": "纹理与底纹"
+        },
+        {
+          "id": "hearts_smiles",
+          "label": "爱心与笑脸"
+        },
+        {
+          "id": "seasonal_props",
+          "label": "季节道具",
+          "description": "雪花、枫叶、太阳、节庆元素"
+        },
+        {
+          "id": "light_effects",
+          "label": "光效与高光"
+        },
+        {
+          "id": "frame_border",
+          "label": "边框与贴纸感外轮廓"
         }
-      ],
-      "question_kind": "prompt_input"
+      ]
     },
     {
-      "id": "text_overlay",
-      "question": "你想在图片中加入什么样的文字？",
-      "description": "是否在图片上叠加文字及排版风格",
+      "id": "image_style",
+      "question": "需要怎么样的图片风格？",
+      "description": "选择整体视觉风格方向",
+      "question_kind": "prompt_input",
       "type": "single",
-      "custom_input_placeholder": "例如：左上角小字展示商品名、底部中央位置加价格标签...",
+      "custom_input_placeholder": "例如：日系软萌、欧美潮流、儿童绘本感",
       "options": [
+        {
+          "id": "kawaii",
+          "label": "Kawaii 萌系",
+          "description": "柔和配色、可爱表情、治愈感"
+        },
+        {
+          "id": "flat_vector",
+          "label": "扁平矢量",
+          "description": "线条清晰、色块明确、便于印刷"
+        },
+        {
+          "id": "cartoon_illustration",
+          "label": "卡通插画",
+          "description": "通用商业卡通风格"
+        },
+        {
+          "id": "line_art",
+          "label": "线稿风",
+          "description": "以线条表现主体，色彩较克制"
+        },
+        {
+          "id": "watercolor",
+          "label": "水彩风",
+          "description": "笔触柔和、艺术感更强"
+        },
+        {
+          "id": "pixel_art",
+          "label": "像素风",
+          "description": "复古像素格调"
+        },
+        {
+          "id": "pop_art",
+          "label": "波普风",
+          "description": "高饱和撞色与强对比"
+        },
+        {
+          "id": "retro_vintage",
+          "label": "复古怀旧",
+          "description": "旧海报质感与年代色彩"
+        },
+        {
+          "id": "minimal_modern",
+          "label": "现代极简",
+          "description": "图形精简、视觉干净"
+        },
+        {
+          "id": "bold_commercial",
+          "label": "商业爆款风",
+          "description": "强视觉冲击，适合跨境电商"
+        }
+      ]
+    },
+    {
+      "id": "white_background",
+      "question": "是否需要生成白底图？",
+      "description": "白底更适合部分电商主图和后续排版",
+      "question_kind": "prompt_input",
+      "type": "single",
+      "custom_input_placeholder": "例如：需要纯白底并保留主体完整边缘",
+      "options": [
+        {
+          "id": "pure_white_required",
+          "label": "必须纯白底",
+          "description": "背景为纯白，主体清晰独立"
+        },
+        {
+          "id": "white_preferred",
+          "label": "优先白底",
+          "description": "尽量白底，可保留轻微氛围元素"
+        },
+        {
+          "id": "not_required",
+          "label": "不需要白底",
+          "description": "允许场景背景和装饰环境"
+        }
+      ]
+    },
+    {
+      "id": "needs_text",
+      "question": "是否需要添加文字？",
+      "description": "决定是否在图中加入文案",
+      "question_kind": "prompt_input",
+      "type": "single",
+      "custom_input_placeholder": "例如：需要，主文案放在主体下方",
+      "options": [
+        {
+          "id": "yes_text",
+          "label": "需要添加文字"
+        },
         {
           "id": "no_text",
-          "label": "无文字",
-          "description": "纯图形，后期可自行添加文字"
+          "label": "不需要文字"
+        }
+      ]
+    },
+    {
+      "id": "text_content",
+      "question": "如果需要添加文字，需要添加什么文字？",
+      "description": "可多选，也可自定义补充",
+      "question_kind": "prompt_input",
+      "type": "multi",
+      "condition": {
+        "question_id": "needs_text",
+        "equals_option_id": "yes_text"
+      },
+      "custom_input_placeholder": "例如：Best Dad Ever、Summer Vibes、品牌缩写",
+      "options": [
+        {
+          "id": "brand_name",
+          "label": "品牌名"
         },
         {
-          "id": "title_only",
-          "label": "标题文字",
-          "description": "上方预留标题区域"
-        },
-        {
-          "id": "price_tag",
-          "label": "价格标签",
-          "description": "突出促销价格信息"
+          "id": "product_name",
+          "label": "产品名"
         },
         {
           "id": "slogan",
-          "label": "宣传标语",
-          "description": "品牌 slogan 或卖点文案"
+          "label": "宣传语"
         },
         {
-          "id": "rich_layout",
-          "label": "图文混排",
-          "description": "标题+副标题+描述的完整文字版式"
+          "id": "feature_points",
+          "label": "卖点短句"
+        },
+        {
+          "id": "price_promo",
+          "label": "促销信息"
+        },
+        {
+          "id": "holiday_message",
+          "label": "节日祝福语"
+        },
+        {
+          "id": "gift_message",
+          "label": "礼物寄语"
+        },
+        {
+          "id": "safety_note",
+          "label": "安全提示语"
+        },
+        {
+          "id": "custom_text",
+          "label": "自定义文案"
         }
-      ],
-      "question_kind": "prompt_input"
+      ]
     },
     {
-      "id": "product_category",
-      "question": "这张图片主要用于推广哪类产品？",
-      "description": "该图片主要用于哪类产品",
+      "id": "product_usage",
+      "question": "生成的图片用于什么产品？",
+      "description": "跨境常见印花商品场景",
+      "question_kind": "prompt_input",
       "type": "single",
-      "custom_input_placeholder": "例如：学习文具、海淘产品、舞台演出服装...",
+      "custom_input_placeholder": "例如：儿童卫衣前胸印花、马克杯环绕图案",
       "options": [
         {
-          "id": "apparel",
-          "label": "服装 / 服饰",
-          "description": "T恤、卫衣、连衣裙等",
-          "tags": [
-            "服饰"
-          ]
+          "id": "t_shirt",
+          "label": "T 恤"
         },
         {
-          "id": "bags",
-          "label": "箱包 / 配件",
-          "description": "手提包、背包、钱包等",
-          "tags": [
-            "箱包"
-          ]
+          "id": "hoodie",
+          "label": "连帽卫衣"
         },
         {
-          "id": "stationery",
-          "label": "文创 / 文具",
-          "description": "笔记本、贴纸、手账等",
-          "tags": [
-            "文创"
-          ]
+          "id": "sweatshirt",
+          "label": "圆领卫衣"
+        },
+        {
+          "id": "mug",
+          "label": "马克杯"
+        },
+        {
+          "id": "tumbler",
+          "label": "保温杯"
+        },
+        {
+          "id": "rug",
+          "label": "地毯"
+        },
+        {
+          "id": "pillow",
+          "label": "抱枕"
+        },
+        {
+          "id": "tote_bag",
+          "label": "帆布袋"
         },
         {
           "id": "phone_case",
-          "label": "手机壳 / 数码周边",
-          "description": "手机壳、平板保护套等",
-          "tags": [
-            "数码"
-          ]
+          "label": "手机壳"
         },
         {
-          "id": "home_decor",
-          "label": "家居 / 装饰",
-          "description": "抱枕、挂画、杯子等",
-          "tags": [
-            "家居"
-          ]
+          "id": "sticker",
+          "label": "贴纸"
         },
         {
-          "id": "toy_collectible",
-          "label": "玩具 / 潮玩",
-          "description": "手办、盲盒、玩偶等",
-          "tags": [
-            "潮玩"
-          ]
+          "id": "poster",
+          "label": "海报"
+        },
+        {
+          "id": "blanket",
+          "label": "毛毯"
         }
-      ],
-      "question_kind": "prompt_input"
+      ]
     },
     {
       "id": "target_audience",
-      "question": "你的目标消费人群是哪类？",
-      "description": "目标消费人群画像",
-      "type": "single",
-      "custom_input_placeholder": "例如：初中生、职场白领、二次元爱好者...",
+      "question": "图片的适用人群是哪些？",
+      "description": "可多选，便于定制风格与配色",
+      "question_kind": "prompt_input",
+      "type": "multi",
+      "custom_input_placeholder": "例如：3-6 岁儿童、18-24 岁女性、通用礼品",
       "options": [
         {
-          "id": "children",
-          "label": "儿童（3-12 岁）",
-          "description": "色彩鲜艳、图案简单、安全可爱",
-          "tags": [
-            "儿童"
-          ]
+          "id": "infant",
+          "label": "婴儿"
+        },
+        {
+          "id": "kids",
+          "label": "儿童"
         },
         {
           "id": "teen",
-          "label": "青少年（13-25 岁）",
-          "description": "潮流活力，追求个性表达",
-          "tags": [
-            "年轻人"
-          ]
+          "label": "青少年"
         },
         {
-          "id": "young_female",
-          "label": "年轻女性（18-35 岁）",
-          "description": "少女感、精致感，粉细柔色调",
-          "tags": [
-            "女性"
-          ]
+          "id": "young_adult",
+          "label": "青年"
         },
         {
-          "id": "young_male",
-          "label": "年轻男性（18-35 岁）",
-          "description": "酷感硬朗，撞色大图",
-          "tags": [
-            "男性"
-          ]
+          "id": "adult",
+          "label": "成年人"
         },
         {
-          "id": "adult_general",
-          "label": "大众成人（25-45 岁）",
-          "description": "简洁大方，品质感强",
-          "tags": [
-            "成人"
-          ]
+          "id": "middle_age",
+          "label": "中年人"
         },
         {
-          "id": "parent_gift",
-          "label": "亲子 / 礼赠",
-          "description": "温馨可爱，适合作为礼物",
-          "tags": [
-            "亲子",
-            "礼品"
-          ]
+          "id": "senior",
+          "label": "老年人"
+        },
+        {
+          "id": "general_unisex",
+          "label": "通用人群"
         }
-      ],
-      "question_kind": "prompt_input"
+      ]
     }
   ]
 }

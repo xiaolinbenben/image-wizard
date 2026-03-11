@@ -7,10 +7,10 @@ import twoDImageJson from "./2d-image.json";
 import fullWidthImageJson from "./full-width-image.json";
 
 export const templates: Template[] = [
+  twoDImageJson as Template,
   posterJson as Template,
   mainImageJson as Template,
   ipPatternJson as Template,
-  twoDImageJson as Template,
   fullWidthImageJson as Template,
 ];
 
