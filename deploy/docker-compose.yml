@@ -5,9 +5,8 @@ services:
       dockerfile: deploy/Dockerfile
     container_name: image-wizard-app
     restart: unless-stopped
-    environment:
-      NODE_ENV: production
-      TZ: ${TZ:-Asia/Shanghai}
+    env_file:
+      - ./.env
     expose:
       - "3099"
     healthcheck:
@@ -28,9 +27,8 @@ services:
     depends_on:
       wizard-app:
         condition: service_healthy
-    environment:
-      DOMAIN: ${DOMAIN:-wizard.linzhiqing.dev}
-      TZ: ${TZ:-Asia/Shanghai}
+    env_file:
+      - ./.env
     ports:
       - "80:80"
       - "443:443"
