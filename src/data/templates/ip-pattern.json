@@ -1,0 +1,271 @@
+{
+  "id": "ip_pattern",
+  "title": "IP 印花图生成",
+  "description": "为服装、箱包、文创等产品生成 IP 角色印花图案，支持自定义角色描述与风格",
+  "base_prompt": "Generate a seamless pattern illustration design for printing on merchandise",
+  "output_constraint": "Seamless tileable pattern, clean vector-like edges, transparent or solid background, print-ready quality, no watermark.",
+  "questions": [
+    {
+      "id": "ip_character",
+      "question": "你希望以哪种 IP 形象为主体？",
+      "description": "选择或描述你想要的 IP 角色形象",
+      "type": "single",
+      "custom_input_placeholder": "例如：穿宇航服的柯基犬、戴墨镜的熊猫...",
+      "options": [
+        {
+          "id": "cute_cat",
+          "label": "萌系猫咪",
+          "description": "圆脸大眼、软萌可爱的猫咪",
+          "tags": [
+            "萌系",
+            "猫咪"
+          ],
+          "preview": "#FFB6C1"
+        },
+        {
+          "id": "cool_bear",
+          "label": "潮酷小熊",
+          "description": "穿潮牌街头风的小熊",
+          "tags": [
+            "潮酷",
+            "小熊"
+          ],
+          "preview": "#8B4513"
+        },
+        {
+          "id": "space_rabbit",
+          "label": "太空兔",
+          "description": "穿宇航服的兔子，太空主题",
+          "tags": [
+            "科幻",
+            "兔子"
+          ],
+          "preview": "#4169E1"
+        },
+        {
+          "id": "dragon_baby",
+          "label": "小龙宝宝",
+          "description": "Q 版中国龙，圆润可爱",
+          "tags": [
+            "国潮",
+            "龙"
+          ],
+          "preview": "#DC143C"
+        },
+        {
+          "id": "flower_fairy",
+          "label": "花仙子",
+          "description": "花瓣翅膀的精灵少女",
+          "tags": [
+            "梦幻",
+            "仙子"
+          ],
+          "preview": "#FF69B4"
+        },
+        {
+          "id": "robot_toy",
+          "label": "机甲玩具",
+          "description": "复古机械感的小机器人",
+          "tags": [
+            "科技",
+            "机甲"
+          ],
+          "preview": "#708090"
+        }
+      ],
+      "question_kind": "prompt_input"
+    },
+    {
+      "id": "extra_elements",
+      "question": "你想在图案中加入哪些装饰元素？",
+      "description": "选择要融入图案的装饰元素（可多选），也可自行补充",
+      "type": "multi",
+      "custom_input_placeholder": "例如：樱花瓣、音符、小星球...",
+      "options": [
+        {
+          "id": "stars",
+          "label": "星星月亮",
+          "tags": [
+            "梦幻"
+          ]
+        },
+        {
+          "id": "flowers",
+          "label": "花卉植物",
+          "tags": [
+            "自然"
+          ]
+        },
+        {
+          "id": "clouds",
+          "label": "祥云",
+          "tags": [
+            "国风"
+          ]
+        },
+        {
+          "id": "geometric",
+          "label": "几何图形",
+          "tags": [
+            "现代"
+          ]
+        },
+        {
+          "id": "food",
+          "label": "美食零食",
+          "tags": [
+            "可爱"
+          ]
+        },
+        {
+          "id": "text_bubble",
+          "label": "对话气泡",
+          "tags": [
+            "趣味"
+          ]
+        }
+      ],
+      "question_kind": "prompt_input"
+    },
+    {
+      "id": "style",
+      "question": "你期望的整体画风是什么？",
+      "description": "选择印花的整体画风，也可自行描述",
+      "type": "single",
+      "custom_input_placeholder": "例如：赛博朋克霓虹风、水墨淡彩风...",
+      "options": [
+        {
+          "id": "kawaii",
+          "label": "日系卡哇伊",
+          "description": "马卡龙色、圆润线条",
+          "preview": "#FFB7D5"
+        },
+        {
+          "id": "flat_vector",
+          "label": "扁平矢量",
+          "description": "简洁线条、色块分明",
+          "preview": "#4ECDC4"
+        },
+        {
+          "id": "watercolor",
+          "label": "水彩手绘",
+          "description": "柔和晕染、艺术感",
+          "preview": "#87CEEB"
+        },
+        {
+          "id": "pixel",
+          "label": "像素风",
+          "description": "复古游戏感",
+          "preview": "#32CD32"
+        },
+        {
+          "id": "chinese_ink",
+          "label": "国潮水墨",
+          "description": "传统水墨 + 现代配色",
+          "preview": "#2F4F4F"
+        },
+        {
+          "id": "3d_render",
+          "label": "3D 渲染",
+          "description": "立体质感、黏土材质",
+          "preview": "#DDA0DD"
+        }
+      ],
+      "question_kind": "prompt_input"
+    },
+    {
+      "id": "has_text",
+      "question": "你的图案中需要包含文字吗？",
+      "description": "图案中是否需要加入装饰性文字",
+      "type": "single",
+      "custom_input_placeholder": "例如：需要角标文案、加入微小 logo 标识...",
+      "options": [
+        {
+          "id": "yes",
+          "label": "需要文字",
+          "description": "在图案中融入文字元素"
+        },
+        {
+          "id": "no",
+          "label": "不需要文字",
+          "description": "纯图形图案"
+        }
+      ],
+      "question_kind": "prompt_input"
+    },
+    {
+      "id": "text_content",
+      "question": "你想在图案中加入什么文字？",
+      "description": "输入你想要出现在图案中的文字",
+      "type": "single",
+      "custom_input_placeholder": "例如：HELLO、加油鸭、Love & Peace...",
+      "condition": {
+        "question_id": "has_text",
+        "equals_option_id": "yes"
+      },
+      "options": [
+        {
+          "id": "brand_name",
+          "label": "品牌名称",
+          "description": "用自定义输入填写你的品牌名"
+        },
+        {
+          "id": "slogan_cn",
+          "label": "中文标语",
+          "description": "例如：加油、开心每一天"
+        },
+        {
+          "id": "slogan_en",
+          "label": "英文标语",
+          "description": "例如：Stay Cool、Good Vibes"
+        },
+        {
+          "id": "year_text",
+          "label": "年份数字",
+          "description": "例如：2026"
+        }
+      ],
+      "question_kind": "prompt_input"
+    },
+    {
+      "id": "bg_color",
+      "question": "你希望图案的底色是什么？",
+      "description": "印花图案的底色基调",
+      "type": "single",
+      "custom_input_placeholder": "例如：薄荷绿、莫兰迪灰粉...",
+      "options": [
+        {
+          "id": "transparent",
+          "label": "透明底",
+          "description": "适合后期自由搭配",
+          "preview": "#EEEEEE"
+        },
+        {
+          "id": "white",
+          "label": "白底",
+          "description": "百搭经典",
+          "preview": "#FFFFFF"
+        },
+        {
+          "id": "black",
+          "label": "黑底",
+          "description": "酷感、适合深色衣物",
+          "preview": "#1A1A1A"
+        },
+        {
+          "id": "pastel",
+          "label": "马卡龙浅色",
+          "description": "柔和清新",
+          "preview": "#FADADD"
+        },
+        {
+          "id": "kraft",
+          "label": "牛皮纸色",
+          "description": "复古文艺",
+          "preview": "#C4A882"
+        }
+      ],
+      "question_kind": "prompt_input"
+    }
+  ]
+}

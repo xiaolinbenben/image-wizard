@@ -1,0 +1,245 @@
+{
+  "id": "ecommerce_poster",
+  "title": "电商促销海报",
+  "description": "快速生成电商大促、节日促销等场景海报，适用于淘宝、京东、拼多多等平台",
+  "base_prompt": "Generate a professional e-commerce promotional poster",
+  "output_constraint": "High resolution, clean layout, prominent text hierarchy, suitable for online marketplace listing.",
+  "questions": [
+    {
+      "id": "scene",
+      "question": "你在为哪种促销场景制作海报？",
+      "description": "选择海报适用的促销活动类型",
+      "type": "single",
+      "custom_input_placeholder": "例如：开学季大促、超品日活动...",
+      "options": [
+        {
+          "id": "618",
+          "label": "618 年中大促",
+          "description": "年中最大电商购物节",
+          "tags": [
+            "年中",
+            "大促"
+          ]
+        },
+        {
+          "id": "double11",
+          "label": "双十一狂欢",
+          "description": "全球最大购物节",
+          "tags": [
+            "双十一",
+            "狂欢"
+          ]
+        },
+        {
+          "id": "newyear",
+          "label": "年货节",
+          "description": "春节年货采购",
+          "tags": [
+            "春节",
+            "年货"
+          ]
+        },
+        {
+          "id": "daily",
+          "label": "日常促销",
+          "description": "通用日常折扣活动",
+          "tags": [
+            "日常",
+            "通用"
+          ]
+        },
+        {
+          "id": "clearance",
+          "label": "清仓特卖",
+          "description": "库存清仓、限时抢购",
+          "tags": [
+            "清仓",
+            "限时"
+          ]
+        }
+      ],
+      "question_kind": "prompt_input"
+    },
+    {
+      "id": "category",
+      "question": "你主推的是哪类商品？",
+      "description": "海报主推商品类别",
+      "type": "single",
+      "custom_input_placeholder": "例如：宠物用品、母婴产品、户外装备...",
+      "options": [
+        {
+          "id": "beauty",
+          "label": "美妆护肤",
+          "tags": [
+            "美妆"
+          ]
+        },
+        {
+          "id": "electronics",
+          "label": "数码家电",
+          "tags": [
+            "数码"
+          ]
+        },
+        {
+          "id": "fashion",
+          "label": "服饰鞋包",
+          "tags": [
+            "服饰"
+          ]
+        },
+        {
+          "id": "food",
+          "label": "食品零食",
+          "tags": [
+            "食品"
+          ]
+        },
+        {
+          "id": "home",
+          "label": "家居日用",
+          "tags": [
+            "家居"
+          ]
+        }
+      ],
+      "question_kind": "prompt_input"
+    },
+    {
+      "id": "discount_type",
+      "question": "你想展示什么样的优惠形式？",
+      "type": "single",
+      "custom_input_placeholder": "例如：限量预售、积分兑换、拼团优惠...",
+      "options": [
+        {
+          "id": "percent_off",
+          "label": "折扣 (X折)",
+          "description": "显示折扣力度"
+        },
+        {
+          "id": "coupon",
+          "label": "满减优惠券",
+          "description": "满XX减XX"
+        },
+        {
+          "id": "flash_sale",
+          "label": "限时秒杀",
+          "description": "倒计时秒杀"
+        },
+        {
+          "id": "gift",
+          "label": "买赠活动",
+          "description": "买一送一/赠品"
+        }
+      ],
+      "question_kind": "prompt_input"
+    },
+    {
+      "id": "newyear_element",
+      "question": "你希望融入哪些年味元素？",
+      "description": "选择要融入海报的春节传统元素（可多选）",
+      "type": "multi",
+      "custom_input_placeholder": "例如：中国结、剪纸窗花、鞭炮...",
+      "condition": {
+        "question_id": "scene",
+        "equals_option_id": "newyear"
+      },
+      "options": [
+        {
+          "id": "lantern",
+          "label": "灯笼",
+          "preview": "#FF3333"
+        },
+        {
+          "id": "firework",
+          "label": "烟花",
+          "preview": "#FFD700"
+        },
+        {
+          "id": "dragon",
+          "label": "祥龙",
+          "preview": "#C41E3A"
+        },
+        {
+          "id": "couplet",
+          "label": "春联/福字",
+          "preview": "#B22222"
+        }
+      ],
+      "question_kind": "prompt_input"
+    },
+    {
+      "id": "style",
+      "question": "你希望海报呈现什么视觉风格？",
+      "type": "single",
+      "custom_input_placeholder": "例如：赛博朋克、复古波普、简约北欧风...",
+      "options": [
+        {
+          "id": "flat",
+          "label": "扁平插画",
+          "description": "简洁现代，适合年轻受众",
+          "preview": "#6C5CE7"
+        },
+        {
+          "id": "photo_realistic",
+          "label": "实拍质感",
+          "description": "真实高级，适合品质商品",
+          "preview": "#2D3436"
+        },
+        {
+          "id": "gradient",
+          "label": "渐变潮流",
+          "description": "潮流炫酷，适合数码科技",
+          "preview": "#E17055"
+        },
+        {
+          "id": "chinese_style",
+          "label": "国潮中国风",
+          "description": "传统美学，适合文化类商品",
+          "preview": "#D63031"
+        }
+      ],
+      "question_kind": "prompt_input"
+    },
+    {
+      "id": "audience",
+      "question": "你的目标受众是哪类人群？",
+      "type": "single",
+      "custom_input_placeholder": "例如：银发族、大学生、健身爱好者...",
+      "options": [
+        {
+          "id": "female_young",
+          "label": "年轻女性",
+          "tags": [
+            "18-30",
+            "女性"
+          ]
+        },
+        {
+          "id": "male_young",
+          "label": "年轻男性",
+          "tags": [
+            "18-30",
+            "男性"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "家庭用户",
+          "tags": [
+            "家庭",
+            "全年龄"
+          ]
+        },
+        {
+          "id": "general",
+          "label": "大众通用",
+          "tags": [
+            "通用"
+          ]
+        }
+      ],
+      "question_kind": "prompt_input"
+    }
+  ]
+}

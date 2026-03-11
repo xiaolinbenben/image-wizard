@@ -1,0 +1,263 @@
+{
+  "id": "full_width_image",
+  "title": "生图系统 — 全幅图片",
+  "description": "生成覆盖整个版面的全幅沉浸式图片，适用于详情页长图、落地页 Banner、社交封面等需要强视觉冲击力的场景",
+  "base_prompt": "Generate a stunning full-bleed full-width immersive scene image with rich visual depth and atmosphere",
+  "output_constraint": "Full bleed composition, edge-to-edge visual coverage, no white borders, cinematic quality, high resolution, no watermark.",
+  "questions": [
+    {
+      "id": "ip",
+      "question": "你希望画面的视觉主角是什么？",
+      "description": "选择画面的主体 IP 形象或视觉主角",
+      "type": "single",
+      "custom_input_placeholder": "例如：巨型机器人展开双翼的层叠场景、宇宙飞船返航地球...",
+      "options": [
+        {
+          "id": "brand_mascot",
+          "label": "品牌吉祥物",
+          "description": "吉祥物占据画面核心，强化品牌识别",
+          "tags": [
+            "吉祥物",
+            "品牌"
+          ],
+          "preview": "#FFD700"
+        },
+        {
+          "id": "product_hero",
+          "label": "产品实物",
+          "description": "产品大图展示，带场景氛围",
+          "tags": [
+            "产品",
+            "实物"
+          ],
+          "preview": "#C0C0C0"
+        },
+        {
+          "id": "lifestyle_human",
+          "label": "真人生活场景",
+          "description": "真实生活场景，增加用户代入感",
+          "tags": [
+            "生活",
+            "真人"
+          ],
+          "preview": "#DEB887"
+        },
+        {
+          "id": "landscape_scene",
+          "label": "场景大片",
+          "description": "大场景环境图，渲染品牌调性",
+          "tags": [
+            "场景",
+            "风景"
+          ],
+          "preview": "#87CEEB"
+        },
+        {
+          "id": "concept_art",
+          "label": "概念艺术插画",
+          "description": "艺术感插画，适合高端/潮牌",
+          "tags": [
+            "艺术",
+            "插画"
+          ],
+          "preview": "#9370DB"
+        }
+      ],
+      "question_kind": "prompt_input"
+    },
+    {
+      "id": "elements",
+      "question": "你想在全幅图中融入哪些场景元素？",
+      "description": "选择画面中的场景构成元素（可多选）",
+      "type": "multi",
+      "custom_input_placeholder": "例如：海浪飞溅、火车轨道延伸至远方、雪山冷冽...",
+      "options": [
+        {
+          "id": "atmosphere_light",
+          "label": "氛围光效"
+        },
+        {
+          "id": "seasonal",
+          "label": "季节 / 节日氛围"
+        },
+        {
+          "id": "nature_env",
+          "label": "自然环境"
+        },
+        {
+          "id": "urban_env",
+          "label": "城市 / 建筑"
+        },
+        {
+          "id": "particle_effect",
+          "label": "粒子 / 烟雾特效"
+        },
+        {
+          "id": "color_gradient",
+          "label": "渐变色彩层次"
+        }
+      ],
+      "question_kind": "prompt_input"
+    },
+    {
+      "id": "text_overlay",
+      "question": "全幅图上需要添加什么样的文字版式？",
+      "description": "全幅图片上的文字内容与版式",
+      "type": "single",
+      "custom_input_placeholder": "例如：右下角功能点列表、中间大字标题加底部价格...",
+      "options": [
+        {
+          "id": "no_text",
+          "label": "无文字",
+          "description": "纯视觉全幅图，后期叠加文字"
+        },
+        {
+          "id": "headline_cta",
+          "label": "大标题 + 行动按钮",
+          "description": "核心卖点标题 + CTA 按钮版式"
+        },
+        {
+          "id": "brand_logo_area",
+          "label": "品牌 Logo 留白区",
+          "description": "为品牌标识预留叠加位置"
+        },
+        {
+          "id": "full_editorial",
+          "label": "编辑版式（杂志风）",
+          "description": "杂志大片风格的图文版式"
+        },
+        {
+          "id": "minimal_caption",
+          "label": "简约说明文字",
+          "description": "角落小字，简洁不喧宾夺主"
+        }
+      ],
+      "question_kind": "prompt_input"
+    },
+    {
+      "id": "product_category",
+      "question": "这张全幅图主要用于推广哪类产品？",
+      "description": "该全幅图片主要用于推广哪类产品",
+      "type": "single",
+      "custom_input_placeholder": "例如：新能源汽车、高端奢品珠宝、医疗健康设备...",
+      "options": [
+        {
+          "id": "fashion",
+          "label": "时尚 / 服装品牌",
+          "description": "大牌时尚感，强调品牌调性",
+          "tags": [
+            "时尚",
+            "服装"
+          ]
+        },
+        {
+          "id": "beauty",
+          "label": "美妆 / 护肤",
+          "description": "光泽感、精致感，适合护肤美妆",
+          "tags": [
+            "美妆",
+            "护肤"
+          ]
+        },
+        {
+          "id": "food_beverage",
+          "label": "食品 / 饮品",
+          "description": "食欲感、新鲜感，让人垂涎",
+          "tags": [
+            "食品",
+            "饮品"
+          ]
+        },
+        {
+          "id": "tech_digital",
+          "label": "科技 / 数码",
+          "description": "科技感、未来感，突显产品创新",
+          "tags": [
+            "科技",
+            "数码"
+          ]
+        },
+        {
+          "id": "lifestyle_home",
+          "label": "家居 / 生活方式",
+          "description": "温暖生活感，家居品类首选",
+          "tags": [
+            "家居",
+            "生活"
+          ]
+        },
+        {
+          "id": "outdoor_sport",
+          "label": "户外 / 运动",
+          "description": "动感活力，适合运动户外品类",
+          "tags": [
+            "户外",
+            "运动"
+          ]
+        }
+      ],
+      "question_kind": "prompt_input"
+    },
+    {
+      "id": "target_audience",
+      "question": "你的目标受众群体是谁？",
+      "description": "该全幅图片主要面向哪类目标受众",
+      "type": "single",
+      "custom_input_placeholder": "例如：创业者、中坚职场群体、海外华人...",
+      "options": [
+        {
+          "id": "mass_market",
+          "label": "大众消费者",
+          "description": "受众広、接受度高，通用大众风格",
+          "tags": [
+            "大众"
+          ]
+        },
+        {
+          "id": "young_trendy",
+          "label": "年轻潮流族",
+          "description": "Z 世代、千禧一代，追求潮流个性",
+          "tags": [
+            "年轻人",
+            "潮流"
+          ]
+        },
+        {
+          "id": "premium_consumer",
+          "label": "高端消费者",
+          "description": "注重品质与格调的高消费人群",
+          "tags": [
+            "高端",
+            "奢品"
+          ]
+        },
+        {
+          "id": "female_consumer",
+          "label": "女性消费者",
+          "description": "女性向审美，精致柔美风格",
+          "tags": [
+            "女性"
+          ]
+        },
+        {
+          "id": "male_consumer",
+          "label": "男性消费者",
+          "description": "男性向审美，力量感与硬朗风格",
+          "tags": [
+            "男性"
+          ]
+        },
+        {
+          "id": "family",
+          "label": "家庭 / 亲子",
+          "description": "温馨家庭感，亲子互动场景",
+          "tags": [
+            "家庭",
+            "亲子"
+          ]
+        }
+      ],
+      "question_kind": "prompt_input"
+    }
+  ]
+}

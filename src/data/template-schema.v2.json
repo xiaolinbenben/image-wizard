@@ -1,0 +1,155 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://visionflow.local/image-wizard/template-schema.v2.json",
+  "title": "Image Wizard Template Schema V2",
+  "type": "object",
+  "required": [
+    "id",
+    "title",
+    "description",
+    "base_prompt",
+    "questions"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1
+    },
+    "base_prompt": {
+      "type": "string",
+      "minLength": 1
+    },
+    "output_constraint": {
+      "type": "string"
+    },
+    "questions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/question"
+      }
+    }
+  },
+  "$defs": {
+    "option": {
+      "type": "object",
+      "required": [
+        "id",
+        "label"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "preview": {
+          "type": "string"
+        },
+        "backend_model_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "billing_variant_key": {
+          "type": "string",
+          "minLength": 1
+        },
+        "billing_factor": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        }
+      }
+    },
+    "condition": {
+      "type": "object",
+      "required": [
+        "question_id",
+        "equals_option_id"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "question_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "equals_option_id": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "question": {
+      "type": "object",
+      "required": [
+        "id",
+        "question",
+        "question_kind",
+        "type",
+        "options"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "question": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string"
+        },
+        "question_kind": {
+          "type": "string",
+          "enum": [
+            "prompt_input",
+            "generation_param"
+          ]
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "single",
+            "multi"
+          ]
+        },
+        "options": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/option"
+          }
+        },
+        "condition": {
+          "$ref": "#/$defs/condition"
+        },
+        "custom_input_placeholder": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

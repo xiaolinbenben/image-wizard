@@ -1,0 +1,217 @@
+{
+  "id": "ecommerce_main_image",
+  "title": "电商商品主图",
+  "description": "快速生成高点击率的商品主图，适用于各大电商平台的搜索结果展示",
+  "base_prompt": "Generate a professional e-commerce product main image for marketplace listing",
+  "output_constraint": "Pure white or clean background, product centered, high resolution, no watermark, no text overlay.",
+  "questions": [
+    {
+      "id": "product_type",
+      "question": "你要展示的是哪类商品？",
+      "description": "选择你要拍摄的商品类型",
+      "type": "single",
+      "custom_input_placeholder": "例如：家具、健身器材、宠物用品...",
+      "options": [
+        {
+          "id": "skincare",
+          "label": "护肤品/化妆品",
+          "description": "面霜、精华、口红等",
+          "tags": [
+            "美妆"
+          ]
+        },
+        {
+          "id": "clothing",
+          "label": "服装",
+          "description": "上衣、裤子、外套等",
+          "tags": [
+            "服饰"
+          ]
+        },
+        {
+          "id": "shoes",
+          "label": "鞋子",
+          "description": "运动鞋、皮鞋、高跟鞋等",
+          "tags": [
+            "鞋包"
+          ]
+        },
+        {
+          "id": "electronics",
+          "label": "数码产品",
+          "description": "手机壳、耳机、充电器等",
+          "tags": [
+            "数码"
+          ]
+        },
+        {
+          "id": "food_package",
+          "label": "食品包装",
+          "description": "零食、茶叶、酒水等",
+          "tags": [
+            "食品"
+          ]
+        },
+        {
+          "id": "jewelry",
+          "label": "珠宝饰品",
+          "description": "项链、戒指、手表等",
+          "tags": [
+            "饰品"
+          ]
+        }
+      ],
+      "question_kind": "prompt_input"
+    },
+    {
+      "id": "bg_style",
+      "question": "你希望主图背景呈现什么风格？",
+      "type": "single",
+      "custom_input_placeholder": "例如：木质托板背景、户外自然场景...",
+      "options": [
+        {
+          "id": "pure_white",
+          "label": "纯白底",
+          "description": "平台标准主图底色",
+          "preview": "#FFFFFF"
+        },
+        {
+          "id": "gradient_light",
+          "label": "浅色渐变",
+          "description": "柔和高级感",
+          "preview": "#F0F0F0"
+        },
+        {
+          "id": "scene_lifestyle",
+          "label": "场景化",
+          "description": "带使用场景，增加代入感"
+        },
+        {
+          "id": "color_pop",
+          "label": "撞色背景",
+          "description": "醒目吸睛，突出产品",
+          "preview": "#FFE66D"
+        }
+      ],
+      "question_kind": "prompt_input"
+    },
+    {
+      "id": "clothing_display",
+      "question": "你希望服装以什么方式展示？",
+      "description": "服装类商品的陈列方式",
+      "type": "single",
+      "custom_input_placeholder": "例如：真人模特展示、多件叠放示例...",
+      "condition": {
+        "question_id": "product_type",
+        "equals_option_id": "clothing"
+      },
+      "options": [
+        {
+          "id": "flat_lay",
+          "label": "平铺展示",
+          "description": "俯拍平铺，看全貌"
+        },
+        {
+          "id": "hanger",
+          "label": "衣架悬挂",
+          "description": "正面悬挂展示"
+        },
+        {
+          "id": "mannequin",
+          "label": "模特上身",
+          "description": "看上身效果"
+        },
+        {
+          "id": "folded",
+          "label": "折叠堆放",
+          "description": "质感展示"
+        }
+      ],
+      "question_kind": "prompt_input"
+    },
+    {
+      "id": "lighting",
+      "question": "你希望采用什么样的打光方式？",
+      "type": "single",
+      "custom_input_placeholder": "例如：双侧补光、环形轮廓光...",
+      "options": [
+        {
+          "id": "soft_box",
+          "label": "柔光箱",
+          "description": "均匀柔和，通用"
+        },
+        {
+          "id": "rim_light",
+          "label": "轮廓光",
+          "description": "突出产品轮廓"
+        },
+        {
+          "id": "dramatic",
+          "label": "戏剧光",
+          "description": "高级质感，适合奢品"
+        },
+        {
+          "id": "natural",
+          "label": "自然光",
+          "description": "自然真实，适合食品/家居"
+        }
+      ],
+      "question_kind": "prompt_input"
+    },
+    {
+      "id": "angle",
+      "question": "你希望从哪个角度拍摄商品？",
+      "type": "single",
+      "custom_input_placeholder": "例如：侧面平视、右侧 45° 仰拍、近景特写...",
+      "options": [
+        {
+          "id": "front",
+          "label": "正面平视",
+          "description": "标准正面"
+        },
+        {
+          "id": "45deg",
+          "label": "45° 斜侧",
+          "description": "展示立体感"
+        },
+        {
+          "id": "topdown",
+          "label": "俯拍",
+          "description": "适合平铺类"
+        },
+        {
+          "id": "low_angle",
+          "label": "仰拍",
+          "description": "气势感，适合科技/运动品"
+        }
+      ],
+      "question_kind": "prompt_input"
+    },
+    {
+      "id": "enhancement",
+      "question": "你想为主图添加哪些增强效果？",
+      "description": "额外的视觉提升（可多选）",
+      "type": "multi",
+      "custom_input_placeholder": "例如：细微尘埃、微光散景、柔和烟雾...",
+      "options": [
+        {
+          "id": "reflection",
+          "label": "倒影效果"
+        },
+        {
+          "id": "shadow",
+          "label": "自然投影"
+        },
+        {
+          "id": "sparkle",
+          "label": "光泽微粒"
+        },
+        {
+          "id": "badge",
+          "label": "品质标签"
+        }
+      ],
+      "question_kind": "prompt_input"
+    }
+  ]
+}

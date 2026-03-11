@@ -1,0 +1,14 @@
+{$DOMAIN:wizard.linzhiqing.dev} {
+  encode gzip zstd
+
+  @root path /
+  redir @root /wizard 308
+
+  reverse_proxy wizard-app:3099 {
+    header_up Host {host}
+    header_up X-Real-IP {remote_host}
+    header_up X-Forwarded-For {remote_host}
+    header_up X-Forwarded-Proto {scheme}
+    header_up X-Forwarded-Host {host}
+  }
+}
