@@ -1,6 +1,3 @@
-# image-wizard
-无需任何提示词，点点点完成模型选择、参数配置与风格设定，系统自动生成图片。
-
 # Image Wizard Demo（向导式生图）
 
 > 通过问答向导生成 prompt，并调用 `xingjiabiapi`（Google 兼容）实时生图。
